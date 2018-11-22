@@ -186,10 +186,11 @@ private
 		if (is(T == enum))
 	{
 		import std.traits : EnumMembers;
+		import std.conv : asOriginalType;
 		
 		foreach (i, member; EnumMembers!E)
 		{
-			if (x == member)
+			if (asOriginalType(x) == member)
 				return member;
 		}
 		assert(0, "Not an enum member");
@@ -3435,4 +3436,4 @@ unittest
 
 
 
-
+
